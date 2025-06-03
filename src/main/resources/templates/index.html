@@ -1,23 +1,13 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
--->
-<html>
-    <head>
-        <title>Tienda</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <P>
-    <P> style="text-align: center">hola como estan>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>TODO supply a title</title>
     </head>
     <body>
-        <div>
-            <h1>Home</h1>
-            <h2>La pagina principal</h2>
-            <hr/>
-            <p>Esto es un parrafo de la pagina</p>
-        </div>
+        <header th:replace="~{layout/plantilla :: header}"></header>
+        
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+        
     </body>
 </html>
