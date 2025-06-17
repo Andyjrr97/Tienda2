@@ -7,25 +7,29 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="categoria")
-public class Categoria implements Serializable {
+@Table(name="producto")
+public class Producto implements Serializable {
     // Base de Datos
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_producto")
+    private Long idProducto;
     @Column(name="id_categoria")
-    private Long idCategoria;
     private String descripcion;
+    private String detalle;
+    private double precio;
+    private int existencias;
     @Column(name="ruta_imagen")
     private String rutaImagen;
     private boolean activo;
     
-    public Categoria() {
+    public Producto() {
     }
 
-    public Categoria(Long idCategoria, boolean activo) {
-        this.idCategoria = idCategoria;
+    public Producto(Long descripcion, boolean activo) {
+        this.idProducto = descripcion;
         this.activo = activo;
     }
        

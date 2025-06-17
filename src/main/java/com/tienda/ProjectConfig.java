@@ -22,7 +22,8 @@ public class ProjectConfig implements WebMvcConfigurer{
       return slr;
     }
     
-    @Bean
+    //cambio de idioma
+    @Bean 
     public LocaleChangeInterceptor localeChangeInterceptor(){
         var lci = new LocaleChangeInterceptor();
         lci.setParamName("lang");
