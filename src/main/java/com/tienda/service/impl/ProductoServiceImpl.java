@@ -3,6 +3,7 @@ package com.tienda.service.impl;
 import com.tienda.dao.ProductoDao;
 import com.tienda.domain.Producto;
 import com.tienda.service.ProductoService;
+import com.tienda.repository.ProductoRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,8 @@ public class ProductoServiceImpl implements ProductoService {
 
     @Autowired
     private ProductoDao productoDao;
+    @Autowired
+    private ProductoRepository productoRepository;
 
     @Override
     @Transactional(readOnly = true)

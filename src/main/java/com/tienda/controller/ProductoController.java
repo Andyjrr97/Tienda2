@@ -4,6 +4,7 @@ import com.tienda.domain.Producto;
 import com.tienda.service.CategoriaService;
 import com.tienda.service.ProductoService;
 import com.tienda.service.impl.FirebaseStorageServiceImpl;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +26,7 @@ public class ProductoController {
     @GetMapping("/listado")
     public String listado(Model model) {
         var lista = productoService.getProductos(false);
-        var categorias=categoriaService.getCategorias(true);
+        var categorias = categoriaService.getCategorias(true);
         model.addAttribute("productos", lista);
         model.addAttribute("totalProductos", lista.size());
         model.addAttribute("categorias", categorias);
@@ -59,7 +60,9 @@ public class ProductoController {
     @GetMapping("/modificar/{idProducto}")
     public String productoModificar(Producto producto, Model model) {
         producto = productoService.getProducto(producto);
+        var categorias=categoriaService.getCategorias(false);
         model.addAttribute("producto", producto);
+        model.addAttribute("categorias", categorias);
         return "/producto/modifica";
     }
 }
