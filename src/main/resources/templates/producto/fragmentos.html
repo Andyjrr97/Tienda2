@@ -6,10 +6,10 @@
         <title>TechShop</title>
     </head>
     <body>
-        <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
+        <!-- 1 Sección para crear el botón de agregar y el botón del reporte -->
         <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
             <div class="container" sec:authorize="hasRole('ROLE_ADMIN')">
-                <div class="row">
+                <div class="row mb-2">
                     <div class="col-md-3">   
                         <button 
                             type="button" 
@@ -18,6 +18,18 @@
                             data-bs-target="#agregarProducto">
                             <i class="fas fa-plus"></i> [[#{producto.agregar}]]
                         </button>
+                    </div>
+                    <!--tarea Grupal -->
+                    <div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a th:href="@{/producto/filtrar-productos}" class="btn btn-success btn-block">
+                            <i class="fas fa-plus"></i> Filtrar Productos por Categoria
+                        </a>
+                    </div>
+
+                    <div class="col-md-6" sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a th:href="@{/producto/productos-por-categoria}" class="btn btn-success btn-block">
+                            <i class="fas fa-plus"></i> Reporte: Productos por Categoría
+                        </a>
                     </div>
                 </div>
             </div>
@@ -46,7 +58,7 @@
                                         <option th:each="c : ${categorias}" th:value="${c.idCategoria}" th:text="${c.descripcion}">
                                         </option>    
                                     </select>
-                                </div>                                
+                                </div>
                                 <div class="mb-3">
                                     <label for="descripcion">[[#{producto.descripcion}]]</label>
                                     <input type="text" class="form-control" name="descripcion" required="true"/>

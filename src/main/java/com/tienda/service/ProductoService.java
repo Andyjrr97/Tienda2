@@ -3,9 +3,6 @@ package com.tienda.service;
 import com.tienda.domain.Producto;
 import java.util.List;
 
-import com.tienda.domain.Producto;
-import java.util.List;
-
 public interface ProductoService {
 
     // Se obtiene un listado de productos en un List
@@ -29,4 +26,10 @@ public interface ProductoService {
 
     //Lista de productos utilizando consultas con SQL Nativo
     public List<Producto> metodoNativo(double precioInf, double precioSup);
+    
+    //tarea grupal
+    public List<Producto> buscarPorNombreCategoria(String nombreCategoria);
+    
+    
+
 }

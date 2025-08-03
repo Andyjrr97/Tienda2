@@ -1,5 +1,6 @@
 package com.tienda.controller;
 
+import com.tienda.domain.Categoria;
 import com.tienda.domain.Producto;
 import com.tienda.service.CategoriaService;
 import com.tienda.service.ProductoService;
@@ -60,9 +61,20 @@ public class ProductoController {
     @GetMapping("/modificar/{idProducto}")
     public String productoModificar(Producto producto, Model model) {
         producto = productoService.getProducto(producto);
-        var categorias=categoriaService.getCategorias(false);
+        var categorias = categoriaService.getCategorias(false);
         model.addAttribute("producto", producto);
         model.addAttribute("categorias", categorias);
         return "/producto/modifica";
     }
+
+    //Tarea Grupal
+    @GetMapping("/filtrar-productos")
+    public String filtrarProductos(@RequestParam(required = false) String nombreCategoria, Model model) {
+        if (nombreCategoria != null && !nombreCategoria.isEmpty()) {
+            List<Producto> productos = productoService.buscarPorNombreCategoria(nombreCategoria);
+            model.addAttribute("productos", productos);
+        }
+        return "reportes/filtrar_productos";
+    }
+
 }

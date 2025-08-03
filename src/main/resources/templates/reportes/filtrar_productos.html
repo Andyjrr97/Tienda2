@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>TechShop - Filtrar Productos</title>
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <main class="container my-5">
+            <h2 class="text-center mb-4">Filtrar productos por nombre de categoría</h2>
+
+            <form th:action="@{/producto/filtrar-productos}" method="get">
+                <label for="nombreCategoria">Nombre de la categoría:</label>
+                <input type="text" id="nombreCategoria" name="nombreCategoria" required>
+                    <button type="submit">Buscar</button>
+            </form>
+
+            <div th:if="${productos != null}">
+                <h3>Resultados encontrados:</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Categoría</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="producto : ${productos}">
+                            <td th:text="${producto.descripcion}"></td>
+                            <td th:text="${producto.precio}"></td>
+                            <td th:text="${producto.categoria.nombre}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+    </body>
+</html>

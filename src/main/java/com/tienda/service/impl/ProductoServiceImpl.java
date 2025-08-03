@@ -63,4 +63,12 @@ public class ProductoServiceImpl implements ProductoService {
     public List<Producto> metodoNativo(double precioInf, double precioSup) {
         return productoDao.metodoNativo(precioInf, precioSup);
     }
+
+    //Tarea Grupal
+    @Override
+    @Transactional(readOnly = true)
+    public List<Producto> buscarPorNombreCategoria(String nombreCategoria) {
+        return productoRepository.buscarPorNombreCategoria(nombreCategoria);
+    }
+
 }

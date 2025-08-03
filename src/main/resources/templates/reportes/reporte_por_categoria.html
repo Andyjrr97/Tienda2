@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>TechShop - Reporte por Categoría</title>
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <main class="container my-5">
+            <h2 class="text-center mb-4">Reporte de productos por categoría</h2>
+
+            <div class="row mb-4">
+                <div class="col-md-6 offset-md-3">
+                    <form th:action="@{/reportes/filtrar-productos}" method="get">
+                        <label for="nombreCategoria">Nombre Categoría:</label>
+                        <select name="nombreCategoria" id="nombreCategoria">
+                            <option th:each="categoria : ${categorias}" 
+                                    th:value="${categoria.nombre}" 
+                                    th:text="${categoria.nombre}">
+                            </option>
+                        </select>
+                        <button type="submit">Buscar</button>
+                    </form>
+
+
+                </div>
+            </div>
+
+            <div th:if="${productos != null}" class="table-responsive">
+                <h3 class="text-center">Productos encontrados:</h3>
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="producto : ${productos}">
+                            <td th:text="${producto.descripcion}"></td>
+                            <td th:text="${producto.precio}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+    </body>
+</html>
